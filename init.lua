@@ -568,6 +568,11 @@ vim.keymap.set('n', '<c-space>', '?', { desc = 'Find in buffer backwards'})
 vim.keymap.set('n', '<leader>q', ':qa<cr>', { desc = 'Quit'})
 vim.keymap.set('n', '<leader>e', ':e! ~/.config/nvim/init.lua<cr>', { desc = 'Open editor'})
 vim.keymap.set('i', 'jk', '<esc>')
+vim.keymap.set('n', '<leader>l', ':bnext<cr>')
+vim.keymap.set('n', '<leader>h', ':bprev<cr>')
+vim.keymap.set('n', '<f3>', ':Neotree toggle<cr>')
+vim.keymap.set('i', '<f3>', ':Neotree toggle<cr>')
+vim.keymap.set('n', '<f4>', ':MundoToggle<cr>')
 vim.o.cursorline = true
 
 -- The line beneath this is called `modeline`. See `:help modeline`
