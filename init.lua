@@ -170,6 +170,14 @@ require('lazy').setup({
         component_separators = '|',
         section_separators = '',
       },
+      sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_c = {{'filename', path = 1}},
+        lualine_x = {'encoding', 'fileformat', 'filetype'},
+        lualine_y = {'progress'},
+        lualine_z = {'location'}
+      }
     },
   },
 
@@ -574,6 +582,9 @@ vim.keymap.set('n', '<f3>', ':Neotree toggle<cr>')
 vim.keymap.set('i', '<f3>', ':Neotree toggle<cr>')
 vim.keymap.set('n', '<f4>', ':MundoToggle<cr>')
 vim.o.cursorline = true
+
+-- strip all trailing whitespace in the current file
+vim.keymap.set('n', '<leader>W', ':%s/\\s\\+$//<cr>:let @/=\'\'<CR>')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
