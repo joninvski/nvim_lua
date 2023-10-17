@@ -65,8 +65,6 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
-
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
@@ -111,6 +109,7 @@ require('lazy').setup({
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {plugins = {marks = false, registers = false}} },
+
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -578,9 +577,9 @@ vim.keymap.set('n', '<leader>e', ':e! ~/.config/nvim/init.lua<cr>', { desc = 'Op
 vim.keymap.set('i', 'jk', '<esc>')
 vim.keymap.set('n', '<leader>l', ':bnext<cr>')
 vim.keymap.set('n', '<leader>h', ':bprev<cr>')
-vim.keymap.set('n', '<f3>', ':Neotree toggle<cr>')
-vim.keymap.set('i', '<f3>', ':Neotree toggle<cr>')
-vim.keymap.set('n', '<f4>', ':MundoToggle<cr>')
+vim.keymap.set('n', '<f2>', ':Neotree toggle<cr>')
+vim.keymap.set('i', '<f2>', ':Neotree toggle<cr>')
+vim.keymap.set('n', '<f3>', ':MundoToggle<cr>')
 vim.o.cursorline = true
 
 -- strip all trailing whitespace in the current file
