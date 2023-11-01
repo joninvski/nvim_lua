@@ -108,7 +108,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {plugins = {marks = false, registers = false}} },
+  { 'folke/which-key.nvim', opts = { plugins = { marks = false, registers = false } } },
 
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
@@ -170,18 +170,18 @@ require('lazy').setup({
         section_separators = '',
       },
       sections = {
-        lualine_a = {'mode'},
+        lualine_a = { 'mode' },
         lualine_b = {},
-        lualine_c = {{'filename', path = 1}},
-        lualine_x = {'encoding', 'filetype'},
-        lualine_y = {'progress'},
-        lualine_z = {'location'}
+        lualine_c = { { 'filename', path = 1 } },
+        lualine_x = { 'encoding', 'filetype' },
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' }
       },
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {{'filename', path = 1}},
-        lualine_x = {'location'},
+        lualine_c = { { 'filename', path = 1 } },
+        lualine_x = { 'location' },
         lualine_y = {},
         lualine_z = {}
       },
@@ -228,6 +228,11 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
+  },
+
+  {
+    -- Highlight, edit, and navigate code
+    'mhartington/formatter.nvim',
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -578,17 +583,21 @@ cmp.setup {
 }
 
 -- Mine
-vim.keymap.set('n', '<space>', '/', { desc = 'Find in buffer '} )
-vim.keymap.set('n', '<c-space>', '?', { desc = 'Find in buffer backwards'})
-vim.keymap.set('n', '<leader>q', ':qa<cr>', { desc = 'Quit'})
-vim.keymap.set('n', '<leader>e', ':e! ~/.config/nvim/init.lua<cr>', { desc = 'Open editor'})
+vim.keymap.set('n', '<space>', '/', { desc = 'Find in buffer ' })
+vim.keymap.set('n', '<c-space>', '?', { desc = 'Find in buffer backwards' })
+vim.keymap.set('n', '<leader>q', ':qa<cr>', { desc = 'Quit' })
+vim.keymap.set('n', '<leader>e', ':e! ~/.config/nvim/init.lua<cr>', { desc = 'Open editor' })
 vim.keymap.set('i', 'jk', '<esc>')
 vim.keymap.set('n', '<leader>l', ':bnext<cr>')
 vim.keymap.set('n', '<leader>h', ':bprev<cr>')
 vim.keymap.set('n', '<f2>', ':Neotree toggle<cr>')
 vim.keymap.set('i', '<f2>', ':Neotree toggle<cr>')
 vim.keymap.set('n', '<f3>', ':MundoToggle<cr>')
+
+-- configs
 vim.o.cursorline = true
+vim.o.nofixeol = true
+
 
 -- strip all trailing whitespace in the current file
 vim.keymap.set('n', '<leader>W', ':%s/\\s\\+$//<cr>:let @/=\'\'<CR>')
