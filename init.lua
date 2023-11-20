@@ -108,7 +108,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = { plugins = { marks = false, registers = false } } },
+  { 'folke/which-key.nvim',  opts = { plugins = { marks = false, registers = false } } },
 
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
@@ -188,6 +188,9 @@ require('lazy').setup({
           return vim.fn.executable 'make' == 1
         end,
       },
+      {
+       "nvim-telescope/telescope-live-grep-args.nvim" ,
+      },
     },
   },
 
@@ -226,6 +229,7 @@ require('lazy').setup({
 
 -- Set highlight on search
 vim.o.hlsearch = false
+vim.o.incsearch = false -- true seems to makes nvim slower
 
 -- Make line numbers default
 vim.wo.number = true
@@ -289,6 +293,15 @@ require('telescope').setup {
     layout_strategy = 'vertical',
     layout_config = { height = 0.99, width = 0.99 },
 
+    extensions = {
+      fzf = {
+        fuzzy = true,                    -- false will only do exact matching
+        override_generic_sorter = true,  -- override the generic sorter
+        override_file_sorter = true,     -- override the file sorter
+        case_mode = "ignore_case",        -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
+      }
+    },
+
     mappings = {
       i = {
         -- ['<C-u>'] = false,
@@ -302,6 +315,7 @@ require('telescope').setup {
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+pcall(require("telescope").load_extension, 'live_grep_args')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -315,7 +329,7 @@ vim.keymap.set('n', '<leader>/', function()
 end, { desc = '[/] Fuzzily search in current buffer' })
 
 vim.keymap.set('n', '<leader>o', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
-vim.keymap.set('n', '<leader>so', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>O', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 
@@ -563,6 +577,8 @@ vim.keymap.set('n', '<leader>h', ':bprev<cr>')
 vim.keymap.set('n', '<f2>', ':Neotree toggle<cr>')
 vim.keymap.set('i', '<f2>', ':Neotree toggle<cr>')
 vim.keymap.set('n', '<f3>', ':MundoToggle<cr>')
+vim.api.nvim_set_keymap('c', '<C-A>', '<Home>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('c', '<C-E>', '<End>', { noremap = true, silent = true })
 
 -- configs
 vim.o.cursorline = true
