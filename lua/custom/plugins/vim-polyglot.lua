@@ -1,10 +1,7 @@
-vim.g.polyglot_disabled = {'autoindent'}
+vim.g.polyglot_disabled = {'autoindent', 'ftdetect'}
 
 return {
   'sheerun/vim-polyglot',
   version = "*",
-  lazy = false,
-  -- config = function()
-  --   vim.g.polyglot_disabled = {'autoindent'}
-  -- end
+  lazy = false
 }
